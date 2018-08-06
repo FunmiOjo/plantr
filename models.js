@@ -20,4 +20,8 @@ const Vegetable = sequelize.define('vegetables', {
   planted_on: Sequelize.DATE
 });
 
+Plot.belongsTo(Gardener);
+Vegetable.belongsToMany(Plot, {through: 'plotVegetables'});
+Gardener.belongsTo(Vegetable, {as: 'favorite_vegetable'});
+
 module.exports = sequelize;
